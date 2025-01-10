@@ -82,6 +82,8 @@ public class ProductDbo {
 
 	public Product insert(Product product) {
 		
+		int i = 1;
+		
 		try {
 			Connection conn = dataSource.getConnection();
 			String query = "INSERT INTO tb_product (name, price, description, img_url, category, insertTime, alterTime, cod_geral) " +
@@ -92,14 +94,14 @@ public class ProductDbo {
 			
 			PreparedStatement stmt = conn.prepareStatement(query, Statement.RETURN_GENERATED_KEYS);
 			
-			stmt.setString(1, product.getName());
-	        stmt.setDouble(2, product.getPrice());
-	        stmt.setString(3, product.getDescription());
-	        stmt.setString(4, product.getImgUrl());
-	        stmt.setString(5, product.getCategory());
-	        stmt.setTimestamp(6, Timestamp.from(Instant.now()));
-	        stmt.setNull(7, Types.TIMESTAMP);
-	        stmt.setString(8, key.toString());
+			stmt.setString(i++, product.getName());
+	        stmt.setDouble(i++, product.getPrice());
+	        stmt.setString(i++, product.getDescription());
+	        stmt.setString(i++, product.getImgUrl());
+	        stmt.setString(i++, product.getCategory());
+	        stmt.setTimestamp(i++, Timestamp.from(Instant.now()));
+	        stmt.setNull(i++, Types.TIMESTAMP);
+	        stmt.setString(i, key.toString());
 	        
 	        int rowsAffected = stmt.executeUpdate();
 	        

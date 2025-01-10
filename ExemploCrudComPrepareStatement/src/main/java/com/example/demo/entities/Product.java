@@ -1,12 +1,9 @@
 package com.example.demo.entities;
 
 import java.io.Serializable;
-import java.time.Instant;
-import java.util.Date;
 import java.util.Objects;
 
 public class Product implements Serializable{
-
 
 	private static final long serialVersionUID = -7829565942340792203L;
 	
